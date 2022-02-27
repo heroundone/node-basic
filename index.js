@@ -10,6 +10,9 @@ http.createServer(function(req, res) {
 
     if(req.url == '/') {
         fs.readFile('./index.html', (err, data) => {
+            if(err) {
+                console.error(err);
+            }
             res.writeHead('200', {'Content-Type': 'text/html'});
             res.write(data);
             res.end();
